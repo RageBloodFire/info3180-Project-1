@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<!--container for the page content-->
+<div class="container">
+    
+    <h1 class="page-header">Add Profile</h1>
+
+    <!--form with the required fields for adding a profile-->
+    <div class="addForm">
+
+        <form id="addProf" name="addProf" method="POST">
+
+            {{form.fname.label}}
+            {{form.fname(class='formControl')}}
+            <br>
+
+            {{form.lname.label}}
+            {{form.lname(class='formControl')}}
+            <br>
+
+            {{form.gender.label}}
+            {{form.gender(class='formControl', placeholder='Select Gender')}}
+            <br>
+
+            {{form.email.label}}
+            {{form.email(class='formControl', placeholder='e.g. joe.grine@mail.com')}}
+            <br>
+
+            {{form.location.label}}
+            {{form.location(class='formControl', placeholder='e.g. Kingston, Jamaica')}}
+            <br>
+
+            {{form.bio.label}}
+            {{form.bio(class='formControl', id='bio')}}
+            <br>
+
+            {{form.photo.label}}
+            {{form.photo}}
+            <br>
+
+            <button name="submit" class="subButt" type="submit">Add Profile</button>
+            <br>
+
+        </form>
+
+    </div>
+    
+</div>
+{% endblock %}
