@@ -6,37 +6,38 @@
 <div class="container">
     
     <h1 class="page-header">Add Profile</h1>
+    
+    {% include 'flash_messages.html' %}
 
     <!--form with the required fields for adding a profile-->
     <div class="addForm">
 
-        <form id="addProf" name="addProf" method="POST">
+        <form id="profile" name="addProf" method="POST" enctype="multipart/form-data">
 
-            {{form.fname.label}}
+            <h5>{{form.fname.label}}</h5>
             {{form.fname(class='formControl')}}
             <br>
 
-            {{form.lname.label}}
+            <h5>{{form.lname.label}}</h5>
             {{form.lname(class='formControl')}}
             <br>
 
-            {{form.gender.label}}
+            <h5>{{form.gender.label}}</h5>
             {{form.gender(class='formControl', placeholder='Select Gender')}}
             <br>
 
-            {{form.email.label}}
+            <h5>{{form.email.label}}</h5>
             {{form.email(class='formControl', placeholder='e.g. joe.grine@mail.com')}}
             <br>
 
-            {{form.location.label}}
-            {{form.location(class='formControl', placeholder='e.g. Kingston, Jamaica')}}
+            <h5>{{form.location.label}}</h5>   {{form.location(class='formControl', placeholder='e.g. Kingston, Jamaica')}}
             <br>
 
-            {{form.bio.label}}
+            <h5>{{form.bio.label}}</h5>
             {{form.bio(class='formControl', id='bio')}}
             <br>
 
-            {{form.photo.label}}
+            <h5>{{form.photo.label}}</h5>
             {{form.photo}}
             <br>
 

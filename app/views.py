@@ -4,7 +4,7 @@ Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
-import os
+import os, datetime
 from app import app, db
 from flask import render_template, request, redirect, url_for, flash, abort
 from werkzeug.utils import secure_filename
@@ -30,34 +30,55 @@ def about():
 
 
 @app.route('/profile', methods=['POST', 'GET'])
-def addprof():
+def profile():
 
     addprof = AddProfile()
 
     # Validate profile info on submit
-    if request.method == 'POST' and addprof.validate():
+    if request.method == 'POST':
 	
-        # Get image data and save upload folder
+        # Get image data and save to upload folder
         pic = request.files['photo']
         filename = secure_filename(pic.filename)
         pic.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		
 		# Get the rest of the profile data
-		fname = addprof.fname.data
-		lname = addprof.lname.data
-		location = addprof.location.data
-		bio = addprof.bio.data
-		gender = addprof.gender.data
-		date = datetime.date.today()
-		id = 
+        fname = addprof.fname.data
+        lname = addprof.lname.data
+        email = addprof.email.data
+        location = addprof.location.data
+        bio = addprof.bio.data
+        gender = addprof.gender.data
+        date = datetime.date.today()
 		
+		# Save data to database
+        newUser = UserProfile(first_name=fname, last_name=lname, email=email, bio=bio, location=location, gender=gender, image=filename, date=date)
+        db.session.add(newUser)
+        db.session.commit()
 		
-		
+        profiles = UserProfile.query.all()
         flash('Profile Added', 'success')
-        return redirect(url_for('profiles'))
+        return redirect(url_for('profiles', profiles=profiles))
 
-    return render_template('profiles.html', form=addprof)
+    return render_template('profile.html', form=addprof)
+    
 
+@app.route('/profiles', methods=['POST', 'GET'])
+def profiles():
+
+    profiles = UserProfile.query.all()
+    return render_template('profiles.html', profiles=profiles)
+
+
+@app.route('/profile/<user_id>', methods=['GET'])
+def user(user_id):
+	
+    if request.method == 'POST':
+        user = UserProfile.query.filter_by(id=user_id).first()
+        return redirect(url_for('user', user=user))
+		
+    return render_template('user.html', user)
+	
 
 def get_uploaded_images():
     rootdir = os.getcwd()
@@ -66,7 +87,6 @@ def get_uploaded_images():
         for file in files:
             list.append(file)
         return list
-    
 
 
 

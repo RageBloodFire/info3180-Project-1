@@ -2,30 +2,20 @@
 
 {% block main %}
 <div class="container">
-    <h1 class="page-header">Profiles</h1>
-    
-    
-    {% if profiles %}
-
-        {% for user in profiles %}
-
-            <div class="profs">
-
-
+    <h1 class="page-header">{{ user.first_name }}'s Profile</h1>
+        
+        <div class="profs">
+                    
                 <img alt="user profile pic" class="smallImg" src="{{ url_for('static', filename='uploads/' + user.image) }}">
                 <span class="info"><h5>{{ user.first_name }} {{ user.last_name }}</h5><br>
                 {{ user.gender }}<br>
                 {{ user.location }}</span>
 
 
-                <span class="buttSec"><a href=" {{ url_for('user') + '/' + user.id }}"><input type="button" class="viewButt" value="View Profile"/></a></span>
+                <button name="button" class="send">Send Message</button>
+                <button name="button" class="fol">Follow</button>
 
-
-            </div>
-
-        {% endfor %}
-
-    {% endif %}
-
-</div>
+        </div>
+        
+    </div>
 {% endblock %}
