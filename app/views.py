@@ -49,7 +49,9 @@ def profile():
         location = addprof.location.data
         bio = addprof.bio.data
         gender = addprof.gender.data
-        date = datetime.date.today()
+        x = datetime.date.today()
+        date = x.strftime("%B %d %Y") 
+
 		
 		# Save data to database
         newUser = UserProfile(first_name=fname, last_name=lname, email=email, bio=bio, location=location, gender=gender, image=filename, date=date)
@@ -73,11 +75,12 @@ def profiles():
 @app.route('/profile/<user_id>', methods=['GET'])
 def user(user_id):
 	
+    user = UserProfile.query.filter_by(id=user_id).first()
+	
     if request.method == 'POST':
-        user = UserProfile.query.filter_by(id=user_id).first()
         return redirect(url_for('user', user=user))
 		
-    return render_template('user.html', user)
+    return render_template('user.html', user=user)
 	
 
 def get_uploaded_images():

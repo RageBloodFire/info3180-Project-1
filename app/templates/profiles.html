@@ -13,12 +13,12 @@
 
 
                 <img alt="user profile pic" class="smallImg" src="{{ url_for('static', filename='uploads/' + user.image) }}">
-                <span class="info"><h5>{{ user.first_name }} {{ user.last_name }}</h5><br>
-                {{ user.gender }}<br>
-                {{ user.location }}</span>
+                <span class="info"><h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                <img alt="icon" src="../static/images/gen.png" class="icon"/>{{ user.gender }}<br>
+                <img alt="icon" src="../static/images/pin.png" class="icon"/>{{ user.location }}</span>
 
 
-                <span class="buttSec"><a href=" {{ url_for('user') + '/' + user.id }}"><input type="button" class="viewButt" value="View Profile"/></a></span>
+                <a href=" {{ url_for('user', user_id=user.id) }}"><input type="button" class="viewButt" value="View Profile"/></a>
 
 
             </div>

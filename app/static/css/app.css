@@ -16,7 +16,7 @@ body {
     box-shadow: 1px 1px 4px black;
     background-color: white;
     padding: 20px;
-    width: 750px;
+    width: 800px;
 }
 
 .profs{
@@ -51,6 +51,7 @@ body {
 .smallImg{
     width: 200px;
     display: inline-block;
+    margin-right: 20px;
 }
 
 .info{
@@ -62,17 +63,56 @@ body {
     color: gray;
 }
 
-.buttSec{
-    display: block;
-    margin-top: 20%;
-}
 
 .viewButt{
-    padding: 5px 15px 5px 15px;
+    padding: 5px 20px 5px 20px;
     border: none;
     border-radius: 5px;
     background-color: limegreen;
     color: white;
     font-weight: bold;
+}
+
+h4{
+    color: black;
+}
+
+.icon{
+    width: 30px;
+}
+
+
+/*single profile styles*/
+.prof{
+    border: none;
+    border-top: solid;
+    border-color: #007bff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px black;
+    background-color: white;
+    padding: 20px 40px 20px 40px;
+    width: 700px;
+}
+
+p{
+    color: gray;
+}
+
+.send, .fol{
+    padding: 5px 50px 5px 50px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-left: 12%;
+    margin-top: 25px;
+}
+
+.send{
+    background-color: limegreen;
+}
+
+.fol{
+    background-color: #007bff;
 }
 

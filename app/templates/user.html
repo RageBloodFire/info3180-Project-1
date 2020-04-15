@@ -4,12 +4,17 @@
 <div class="container">
     <h1 class="page-header">{{ user.first_name }}'s Profile</h1>
         
-        <div class="profs">
+        <div class="prof">
                     
                 <img alt="user profile pic" class="smallImg" src="{{ url_for('static', filename='uploads/' + user.image) }}">
-                <span class="info"><h5>{{ user.first_name }} {{ user.last_name }}</h5><br>
-                {{ user.gender }}<br>
-                {{ user.location }}</span>
+                <span class="info"><h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                <img alt="icon" src="../static/images/mail.png" class="icon"/>{{ user.email }}<br>
+                <img alt="icon" src="../static/images/pin.png" class="icon"/>{{ user.location }}<br>
+                <img alt="icon" src="../static/images/join.png" class="icon"/>Join on {{ user.date }}</span><br><br>
+            
+                
+                <h4>About Me</h4>
+                <p>{{ user.bio }}</p>
 
 
                 <button name="button" class="send">Send Message</button>
